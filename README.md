@@ -11,7 +11,8 @@ Steps to run application locally:-
 2) Download python3, Anaconda Navigator and launch the ananconda prompt.
 3) Go to the location where the application code is cloned and get inside the directory where application files are present.
 4) Run the application using the command :-> python3 app.py
-5) Open the web browzer and hit the url :->  http://localhost:8080                                                                    // In the application code port 8080 is hard coded for the application
+5) Open the web browzer and hit the url :->  http://localhost:8080
+   // In the application code port 8080 is hard coded for the application
 
 
 Steps to deploy application on VM on AWS:-
@@ -19,8 +20,8 @@ Steps to deploy application on VM on AWS:-
 1) Create an public AWS EC2 instance with UBUNTU image and the free tier machine type.
 2) Allow port 8080 in the inbound rules of security group as the application is using it to expose.
 3) Install python3, pip3 and git in the ec2. To verify the installation use the following commands:
-   # python3 --version
-   # git --version
+   // # python3 --version
+   // # git --version
 4) Clone the application repository into the EC2 instance.
 5) Go inside the location of the application files.
 6) Install the dependencies in the requirements.txt using following command:
