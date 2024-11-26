@@ -25,7 +25,7 @@ Steps to deploy application on VM on AWS:-
 4) Clone the application repository into the EC2 instance.
 5) Go inside the location of the application files.
 6) Install the dependencies in the requirements.txt using following command:
-   # pip3 install -r requirements.txt --break-system-packages
+  // # pip3 install -r requirements.txt --break-system-packages
 7) Run the application usimg the command :-> # python3 app.py
 8) Now, use the EC2 instance public ip (x.x.x.x:8080) or the public ipv4 dns (dns:8080) to browse the application using browser.
 
@@ -34,15 +34,15 @@ Setting Up a Virtualized Environment Using Docker:-
 ---------------------------------------------------
 1) We can use the same above application EC2 vm to containerise the application.
 2) Install docker inside the EC2 and verify the installation using following command:
-   # docker --version
+ // # docker --version
 3) Create a dockefile including the base image as python:3.11-slim-buster.
   // This base image contains all the dependencies
   // Dockerfile should be created in the directory containing all the application files.
 4) Build the image using the dockerfile using following command:
-   # docker build -t reincloude/expence-app-python-flask .                                  
+  // # docker build -t reincloude/expence-app-python-flask .                                  
 5) Verify the image using the command :-> # docker images
 6) Now, create a container using the docker image we have builded.
-   # docker run -d -p 8080:8080 reincloude/expence-app-python-flask
+  // # docker run -d -p 8080:8080 reincloude/expence-app-python-flask
 7) verify the container creation using the following command:
-   # docker ps -a
+  // # docker ps -a
 8) Now, use the EC2 instance public ip (x.x.x.x:8080) or the public ipv4 dns (dns:8080) to browse the application using browser.
