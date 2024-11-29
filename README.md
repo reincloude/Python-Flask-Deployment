@@ -27,8 +27,8 @@ Steps to deploy application on VM on AWS:-
 6) Install the dependencies in the requirements.txt using following command:
   // # pip3 install -r requirements.txt --break-system-packages
 Note: If you get blinker package error. then run the following command:
- # sudo apt remove python3-blinker
- # pip3 install --force-reinstall blinker flask --break-system-packages
+// # sudo apt remove python3-blinker
+// # pip3 install --force-reinstall blinker flask --break-system-packages
 Again execute the requirements.txt 
 8) Run the application usimg the command :-> # python3 app.py
 9) Now, use the EC2 instance public ip (x.x.x.x:8080) or the public ipv4 dns (dns:8080) to browse the application using browser.
