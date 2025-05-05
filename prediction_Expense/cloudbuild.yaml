@@ -7,7 +7,7 @@ steps:
   # Step 1: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', '${_IMAGE}', '.']
-    dir: 'prediction_expense/templates/docker'  # Correct the folder name to match GitHub repo structure
+    dir: 'prediction_Expense'  # Correct the directory to where your Dockerfile is located
 
   # Step 2: Push the Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
