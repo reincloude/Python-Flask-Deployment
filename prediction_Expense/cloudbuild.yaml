@@ -4,12 +4,16 @@ substitutions:
   _REGION: 'us-central1'
 
 steps:
+  # Step 1: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', '${_IMAGE}', '.']
+    dir: 'prediction expence/templates/docker'  # Correct the path to Dockerfile directory
 
+  # Step 2: Push the Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', '${_IMAGE}']
 
+  # Step 3: Deploy the image to Google Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args:
