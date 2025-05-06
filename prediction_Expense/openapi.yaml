@@ -18,7 +18,7 @@ paths:
         '200':
           description: A successful response
       x-google-backend:
-        address: "${cloud_run_url}"
+        address: "${cloud_run_url}"  # Moved to the operation level
 
   /predict:
     post:
@@ -28,8 +28,18 @@ paths:
         '200':
           description: Prediction result
       x-google-backend:
-        address: "${cloud_run_url}"
+        address: "${cloud_run_url}"  # Moved to the operation level
 
 x-google-endpoints:
   - name: "${cloud_run_url_host}"
     allowCors: true
+
+# If you want API key support, add a security section like this:
+securityDefinitions:
+  apiKey:
+    type: apiKey
+    in: header
+    name: X-API-KEY
+
+security:
+  - apiKey: []
