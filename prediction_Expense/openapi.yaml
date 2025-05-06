@@ -1,0 +1,35 @@
+swagger: "2.0"
+info:
+  title: "Python Flask API"
+  description: "Prediction Expense API"
+  version: "1.0.0"
+
+schemes:
+  - https
+produces:
+  - application/json
+
+paths:
+  /:
+    get:
+      summary: Home page
+      operationId: home
+      responses:
+        '200':
+          description: A successful response
+      x-google-backend:
+        address: "${cloud_run_url}"
+
+  /predict:
+    post:
+      summary: Make a prediction
+      operationId: predict
+      responses:
+        '200':
+          description: Prediction result
+      x-google-backend:
+        address: "${cloud_run_url}"
+
+x-google-endpoints:
+  - name: "${cloud_run_url_host}"
+    allowCors: true
