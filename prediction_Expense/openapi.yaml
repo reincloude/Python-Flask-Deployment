@@ -34,12 +34,12 @@ x-google-endpoints:
   - name: "${cloud_run_url_host}"
     allowCors: true
 
-# If you want API key support, add a security section like this:
+# API key support section
 securityDefinitions:
   apiKey:
     type: apiKey
     in: header
-    name: X-API-KEY
+    name: x-api-key  # Ensure consistent naming for API key
 
 security:
-  - apiKey: []
+  - apiKey: []  # Enable API key for all operations
