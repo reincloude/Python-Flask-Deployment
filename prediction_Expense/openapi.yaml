@@ -1,50 +1,29 @@
 swagger: "2.0"
 info:
-  title: "Python Flask API"
-  description: "Prediction Expense API"
-  version: "1.0.0"
+  title: Prediction Expense API
+  description: API Gateway routing to a Cloud Run backend
+  version: 1.0.0
 
-host: "{GATEWAY_HOST}"  # Required by API Gateway
+host: "{GATEWAY_HOST}"
 
 schemes:
   - https
+
 produces:
   - application/json
 
 paths:
   /:
-    get:
-      summary: Home page
-      operationId: home
-      responses:
-        "200":
-          description: A successful response
-      x-google-backend:
-        address: https://${cloud_run_url}
-        protocol: h2
-
-  /predict:
     post:
-      summary: Make a prediction
+      summary: Predict
       operationId: predict
       responses:
-        "200":
-          description: Prediction result
+        '200':
+          description: A successful response
       x-google-backend:
-        address: https://${cloud_run_url}
+        address: https://python-flask-service-769170094354.us-central1.run.app
         protocol: h2
 
-# Enable CORS
 x-google-endpoints:
   - name: "{GATEWAY_HOST}"
     allowCors: true
-
-# API key support
-securityDefinitions:
-  api_key:
-    type: apiKey
-    name: x-api-key
-    in: header
-
-security:
-  - api_key: []  # Require API key globally
