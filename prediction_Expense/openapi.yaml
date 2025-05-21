@@ -4,6 +4,8 @@ info:
   description: "Prediction Expense API"
   version: "1.0.0"
 
+host: "{GATEWAY_HOST}"  # Required by API Gateway
+
 schemes:
   - https
 produces:
@@ -15,31 +17,34 @@ paths:
       summary: Home page
       operationId: home
       responses:
-        '200':
+        "200":
           description: A successful response
       x-google-backend:
-        address: "${cloud_run_url}"  # Moved to the operation level
+        address: https://${cloud_run_url}
+        protocol: h2
 
   /predict:
     post:
       summary: Make a prediction
       operationId: predict
       responses:
-        '200':
+        "200":
           description: Prediction result
       x-google-backend:
-        address: "${cloud_run_url}"  # Moved to the operation level
+        address: https://${cloud_run_url}
+        protocol: h2
 
+# Enable CORS
 x-google-endpoints:
-  - name: "${cloud_run_url_host}"
+  - name: "{GATEWAY_HOST}"
     allowCors: true
 
-# API key support section
+# API key support
 securityDefinitions:
-  apiKey:
+  api_key:
     type: apiKey
+    name: x-api-key
     in: header
-    name: x-api-key  # Ensure consistent naming for API key
 
 security:
-  - apiKey: []  # Enable API key for all operations
+  - api_key: []  # Require API key globally
